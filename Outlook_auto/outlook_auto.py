@@ -1,10 +1,6 @@
 import win32com.client
-from bs4 import BeautifulSoup
 import re
-import pandas as pd
 import xlsxwriter
-import emoji
-
 
 
 def outlook_data(keywords, row=0, col=0): 
