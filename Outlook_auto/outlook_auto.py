@@ -7,18 +7,16 @@ import emoji
 
 
 
-def outlook_data(keywords, row=0, col=0):
-    #open excel 
-    workbook = xlsxwriter.Workbook('outlookdata.xlsx')
+def outlook_data(keywords, row=0, col=0): 
+    workbook = xlsxwriter.Workbook('outlookdata.xlsx') #open excel
     sheet = workbook.add_worksheet()
 
     #connect to outlook inbox
     outlook = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
     inbox = outlook.GetDefaultFolder(6)
     messages = inbox.Items
-
-
-
+    
+    #create lists for subject and body
     subject_list = [message.Subject for message in messages]
     body_list = [message.Body for message in messages]
 
@@ -44,5 +42,4 @@ def outlook_data(keywords, row=0, col=0):
     workbook.close() #close workbook
 
 
-outlook_data('Baruch')
 
